@@ -4,9 +4,11 @@ using System.Collections;
 public class CharacterBehaviour : MonoBehaviour
 {
 	// Inspector properties
-	public float speed = 6.0f;
-	public float gravity = 20.0f;
-	public float walkSpeed = 2.0f;
+	public float walkSpeed = 6.0f;
+	public float walkAcceleration = 20.0f;
+	public float walkDeceleration = 60.0f;
+	public float walkAnimationSpeed = 2.0f;
+	public float rotateSpeed = 3.0f;
 	public float idleTime = 10.0f;
 	
 	// Internal state
@@ -14,12 +16,14 @@ public class CharacterBehaviour : MonoBehaviour
 	private bool rightPressed;
 	private int state;
 	private int previousState;
+	private float currentSpeed;
 	private float _idleTime;
 	
 	// Auxiliar variables
 	private Touch touch;
 	private new Animation animation;
 	private CharacterController controller;
+	private Vector3 forward;
 	
 	public void Start ()
 	{
@@ -30,7 +34,7 @@ public class CharacterBehaviour : MonoBehaviour
 		
 		animation = GetComponentInChildren<Animation>();
 		animation.Play("zombie_idle");
-		animation["zombie_walk"].speed = walkSpeed;
+		animation["zombie_walk"].speed = walkAnimationSpeed;
 		
 		controller = GetComponent<CharacterController>();
 	}
@@ -75,13 +79,23 @@ public class CharacterBehaviour : MonoBehaviour
 	
 	private void UpdateState()
 	{
-		switch(state){
-		case CharacterConstants.IDLE_STATE:
-		case CharacterConstants.TURNING_LEFT_STATE:
-		case CharacterConstants.TURNING_RIGHT_STATE:
-		case CharacterConstants.WALKING_STATE:
-			break;
+		if(state == CharacterConstants.TURNING_LEFT_STATE){
+			transform.Rotate(0, -rotateSpeed, 0);
+			
+		} else if(state == CharacterConstants.TURNING_RIGHT_STATE) {
+			transform.Rotate(0, rotateSpeed, 0);
+			
 		}
+		
+		if(state == CharacterConstants.WALKING_STATE){
+			currentSpeed += walkAcceleration * Time.deltaTime;
+		} else {
+			currentSpeed -= walkDeceleration * Time.deltaTime;
+		}
+		
+		currentSpeed = Mathf.Clamp(currentSpeed, 0, walkSpeed);
+		forward = transform.TransformDirection(Vector3.forward);
+		controller.SimpleMove(forward * currentSpeed);
 	}
 	
 	private void ChangeAnimation()
@@ -93,7 +107,7 @@ public class CharacterBehaviour : MonoBehaviour
 					animation.Play("zombie_attack");
 					animation.Play("zombie_idle", AnimationPlayMode.Queue);
 					_idleTime = -2;
-					// play groan 
+					// TODO: SFX groan 
 				}
 			}
 			return; 
@@ -104,9 +118,9 @@ public class CharacterBehaviour : MonoBehaviour
 		
 		switch(state){
 		case CharacterConstants.IDLE_STATE:
-			animation.CrossFade("zombie_idle"); break;
 		case CharacterConstants.TURNING_LEFT_STATE:
 		case CharacterConstants.TURNING_RIGHT_STATE:
+			animation.CrossFade("zombie_idle"); break;
 		case CharacterConstants.WALKING_STATE:
 			animation.CrossFade("zombie_walk"); break;
 		} 
