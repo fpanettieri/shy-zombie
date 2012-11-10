@@ -49,14 +49,14 @@ public class CharacterBehaviour : MonoBehaviour
 	
 	private void DetectInput()
 	{
-#if !UNITY_IPHONE
+#if UNITY_IPHONE
 		leftPressed = false;
 		rightPressed = false;
 	
 		for(int i = 0; i < Input.touchCount; i++){
 			touch = Input.GetTouch(i);
-			if(touch.position.x < LEFT_SIDE){ leftPressed = true; }
-			if(touch.position.x > RIGHT_SIDE){ rightPressed = true; }
+			if(touch.position.x < CharacterConstants.LEFT_SIDE){ leftPressed = true; }
+			if(touch.position.x > CharacterConstants.RIGHT_SIDE){ rightPressed = true; }
 		}
 #else
 		leftPressed = Input.GetMouseButton(0) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W);
