@@ -60,9 +60,9 @@ public class CharacterBehaviour : MonoBehaviour
 	
 	private void DetectInput()
 	{
-		leftPressed = Input.GetKey(KeyCode.LeftArrow);
-		rightPressed = Input.GetKey(KeyCode.RightArrow);
-		walkPressed = Input.GetKey(KeyCode.UpArrow);
+		leftPressed = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
+		rightPressed = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
+		walkPressed = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
 
 		for(int i = 0; i < Input.touchCount; i++){
 			touch = Input.GetTouch(i);
@@ -120,7 +120,6 @@ public class CharacterBehaviour : MonoBehaviour
 			return;
 		}
 		
-		Debug.Log("Changing animation to " + state);
 		_idleTime = 0;
 		
 		switch(state){
