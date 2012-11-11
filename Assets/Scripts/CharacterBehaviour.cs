@@ -4,11 +4,11 @@ using System.Collections;
 public class CharacterBehaviour : MonoBehaviour
 {
 	// Inspector properties
-	public float walkSpeed = 6.0f;
-	public float walkAcceleration = 20.0f;
-	public float walkDeceleration = 60.0f;
-	public float walkAnimationSpeed = 2.0f;
-	public float rotateSpeed = 3.0f;
+	public float walkSpeed = 1.5f;
+	public float walkAcceleration = 5.0f;
+	public float walkDeceleration = 5.0f;
+	public float walkAnimationSpeed = 2.5f;
+	public float rotateSpeed = 1.5f;
 	public float idleTime = 10.0f;
 	
 	// Internal state
@@ -49,7 +49,9 @@ public class CharacterBehaviour : MonoBehaviour
 	
 	private void DetectInput()
 	{
-#if UNITY_IPHONE
+		
+//FIXME: remove this when building the iphone build
+#if !UNITY_IPHONE
 		leftPressed = false;
 		rightPressed = false;
 	
@@ -59,8 +61,8 @@ public class CharacterBehaviour : MonoBehaviour
 			if(touch.position.x > CharacterConstants.RIGHT_SIDE){ rightPressed = true; }
 		}
 #else
-		leftPressed = Input.GetMouseButton(0) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W);
-		rightPressed = Input.GetMouseButton(1) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W);
+		leftPressed = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.A);
+		rightPressed = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.D);
 #endif
 	}
 	
@@ -118,9 +120,9 @@ public class CharacterBehaviour : MonoBehaviour
 		
 		switch(state){
 		case CharacterConstants.IDLE_STATE:
+			animation.CrossFade("zombie_idle"); break;
 		case CharacterConstants.TURNING_LEFT_STATE:
 		case CharacterConstants.TURNING_RIGHT_STATE:
-			animation.CrossFade("zombie_idle"); break;
 		case CharacterConstants.WALKING_STATE:
 			animation.CrossFade("zombie_walk"); break;
 		} 

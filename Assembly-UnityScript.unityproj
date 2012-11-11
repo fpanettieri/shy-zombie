@@ -48,11 +48,15 @@
      <Compile Include="Assets\Toon_Level_Kit\Examples\Script\Character Controllers\Sources\Scripts\FPSInputController.js" />
      <Compile Include="Assets\Toon_Level_Kit\Examples\Script\Character Controllers\Sources\Scripts\PlatformInputController.js" />
      <Compile Include="Assets\Toon_Level_Kit\Examples\Script\SimpleTurn.js" />
+     <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Toon_Level_Kit\Resources\Shaders\Vegetation.shader" />
      <None Include="Assets\Toon_Level_Kit\Resources\Shaders\Rim.shader" />
      <None Include="Assets\Toon_Level_Kit\Documentation\Readme.txt" />
      <None Include="Assets\Toon_Level_Kit\Resources\Shaders\Vegetation-Lightmap.shader" />
      <None Include="Assets\Toon_Level_Kit\Resources\Shaders\Glass.shader" />
+     <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-BasicOutline.shader" />
+     <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-LightedOutline.shader" />
+     <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Lighted.shader" />
      <None Include="Assets\Toon_Level_Kit\Resources\Shaders\Leave.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
