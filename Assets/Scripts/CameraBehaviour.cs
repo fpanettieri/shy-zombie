@@ -13,7 +13,7 @@ public class CameraBehaviour : MonoBehaviour
 	public float zoomRatio = 2;
 	public float angle = 0;
 	public float rotationSwipe = 200;
-	public float zoomSwipe = 200;
+	public float zoomSwipe = 100;
 	
 	// aux variables
 	private float distance;

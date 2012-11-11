@@ -90,7 +90,7 @@ MonoBehaviour:
   zoomRatio: 2.5
   angle: 0
   rotationSwipe: 200
-  zoomSwipe: 200
+  zoomSwipe: 100
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1
