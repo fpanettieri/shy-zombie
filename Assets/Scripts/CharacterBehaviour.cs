@@ -60,24 +60,16 @@ public class CharacterBehaviour : MonoBehaviour
 	
 	private void DetectInput()
 	{
-		
-//FIXME: remove this when building the iphone build
-#if UNITY_IPHONE
-		leftPressed = false;
-		rightPressed = false;
-		walkPressed = false;
-	
+		leftPressed = Input.GetKey(KeyCode.LeftArrow);
+		rightPressed = Input.GetKey(KeyCode.RightArrow);
+		walkPressed = Input.GetKey(KeyCode.UpArrow);
+
 		for(int i = 0; i < Input.touchCount; i++){
 			touch = Input.GetTouch(i);
 			if(Vector2.Distance(touch.position, leftButton) < 64){ leftPressed = true; }
 			if(Vector2.Distance(touch.position, rightButton) < 64){ rightPressed = true; }
 			if(Vector2.Distance(touch.position, walkButton) < 64){ walkPressed = true; }
 		}
-#else
-		leftPressed = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
-		rightPressed = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
-		walkPressed = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
-#endif
 	}
 	
 	private void SwitchState()
