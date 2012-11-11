@@ -857,8 +857,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100056}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11, y: -.5, z: -2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 5.50833368, y: .100000001, z: -40}
+  m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 400000}
   - {fileID: 400008}
@@ -1034,6 +1034,9 @@ MonoBehaviour:
   walkAnimationSpeed: 2.5
   rotateSpeed: 1.5
   idleTime: 10
+  leftButton: {fileID: 0}
+  rightButton: {fileID: 0}
+  walkButton: {fileID: 0}
 --- !u!137 &13700000
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

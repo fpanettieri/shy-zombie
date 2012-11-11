@@ -12,8 +12,11 @@ public class CharacterBehaviour : MonoBehaviour
 	public float idleTime = 10.0f;
 	
 	// Internal state
-	private bool leftPressed;
-	private bool rightPressed;
+	public static bool dirty;
+	public static bool leftPressed;
+	public static bool rightPressed;
+	public static bool walkPressed;
+	
 	private int state;
 	private int previousState;
 	private float currentSpeed;
@@ -25,10 +28,16 @@ public class CharacterBehaviour : MonoBehaviour
 	private CharacterController controller;
 	private Vector3 forward;
 	
+	private Vector2 leftButton;
+	private Vector2 rightButton;
+	private Vector2 walkButton;
+	
 	public void Start ()
 	{
+		dirty = false;
 		leftPressed = false;
 		rightPressed = false;
+		walkPressed = false;
 		state = CharacterConstants.IDLE_STATE;
 		previousState = CharacterConstants.IDLE_STATE;
 		
@@ -37,6 +46,10 @@ public class CharacterBehaviour : MonoBehaviour
 		animation["zombie_walk"].speed = walkAnimationSpeed;
 		
 		controller = GetComponent<CharacterController>();
+		
+		leftButton = new Vector2(80, 584);
+		rightButton = new Vector2(192, 688);
+		walkButton = new Vector2(888, 632);
 	}
 	
 	public void Update ()
@@ -51,24 +64,26 @@ public class CharacterBehaviour : MonoBehaviour
 	{
 		
 //FIXME: remove this when building the iphone build
-#if !UNITY_IPHONE
+#if UNITY_IPHONE
 		leftPressed = false;
 		rightPressed = false;
 	
 		for(int i = 0; i < Input.touchCount; i++){
 			touch = Input.GetTouch(i);
-			if(touch.position.x < CharacterConstants.LEFT_SIDE){ leftPressed = true; }
-			if(touch.position.x > CharacterConstants.RIGHT_SIDE){ rightPressed = true; }
+			if(Vector2.Distance(touch.position, leftButton) < 64){ leftPressed = true; }
+			if(Vector2.Distance(touch.position, rightButton) < 64){ rightPressed = true; }
+			if(Vector2.Distance(touch.position, walkButton) < 64){ walkPressed = true; }
 		}
 #else
-		leftPressed = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.A);
-		rightPressed = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.D);
+		leftPressed = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
+		rightPressed = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
+		walkPressed = || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
 #endif
 	}
 	
 	private void SwitchState()
 	{
-		if(leftPressed && rightPressed){
+		if(walkPressed){
 			state = CharacterConstants.WALKING_STATE;
 		} else if(leftPressed) {
 			state = CharacterConstants.TURNING_LEFT_STATE;
@@ -86,7 +101,6 @@ public class CharacterBehaviour : MonoBehaviour
 			
 		} else if(state == CharacterConstants.TURNING_RIGHT_STATE) {
 			transform.Rotate(0, rotateSpeed, 0);
-			
 		}
 		
 		if(state == CharacterConstants.WALKING_STATE){
@@ -112,9 +126,11 @@ public class CharacterBehaviour : MonoBehaviour
 					// TODO: SFX groan 
 				}
 			}
-			return; 
+			dirty = false;
+			return;
 		}
 		
+		dirty = true;
 		Debug.Log("Changing animation to " + state);
 		_idleTime = 0;
 		
