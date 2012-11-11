@@ -13,10 +13,8 @@ public class HudBehaviour : MonoBehaviour
 	public GameObject walkButtonOff;
 	public GameObject walkButtonOn;
 	
-	public void Update ()
-	{
-		if(!CharacterBehaviour.dirty){ return; }
-		
+	public void FixedUpdate ()
+	{	
 		leftButtonOff.renderer.enabled = !CharacterBehaviour.leftPressed;
 		leftButtonOn.renderer.enabled = CharacterBehaviour.leftPressed;
 		

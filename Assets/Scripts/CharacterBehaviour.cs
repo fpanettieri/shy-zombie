@@ -12,7 +12,6 @@ public class CharacterBehaviour : MonoBehaviour
 	public float idleTime = 10.0f;
 	
 	// Internal state
-	public static bool dirty;
 	public static bool leftPressed;
 	public static bool rightPressed;
 	public static bool walkPressed;
@@ -34,7 +33,6 @@ public class CharacterBehaviour : MonoBehaviour
 	
 	public void Start ()
 	{
-		dirty = false;
 		leftPressed = false;
 		rightPressed = false;
 		walkPressed = false;
@@ -47,9 +45,9 @@ public class CharacterBehaviour : MonoBehaviour
 		
 		controller = GetComponent<CharacterController>();
 		
-		leftButton = new Vector2(80, 584);
-		rightButton = new Vector2(192, 688);
-		walkButton = new Vector2(888, 632);
+		leftButton = new Vector2(80, 184);
+		rightButton = new Vector2(192, 80);
+		walkButton = new Vector2(888, 136);
 	}
 	
 	public void Update ()
@@ -67,6 +65,7 @@ public class CharacterBehaviour : MonoBehaviour
 #if UNITY_IPHONE
 		leftPressed = false;
 		rightPressed = false;
+		walkPressed = false;
 	
 		for(int i = 0; i < Input.touchCount; i++){
 			touch = Input.GetTouch(i);
@@ -77,7 +76,7 @@ public class CharacterBehaviour : MonoBehaviour
 #else
 		leftPressed = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
 		rightPressed = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
-		walkPressed = || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
+		walkPressed = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
 #endif
 	}
 	
@@ -96,14 +95,14 @@ public class CharacterBehaviour : MonoBehaviour
 	
 	private void UpdateState()
 	{
-		if(state == CharacterConstants.TURNING_LEFT_STATE){
+		if(leftPressed){
 			transform.Rotate(0, -rotateSpeed, 0);
 			
-		} else if(state == CharacterConstants.TURNING_RIGHT_STATE) {
+		} else if(rightPressed) {
 			transform.Rotate(0, rotateSpeed, 0);
 		}
 		
-		if(state == CharacterConstants.WALKING_STATE){
+		if(walkPressed){
 			currentSpeed += walkAcceleration * Time.deltaTime;
 		} else {
 			currentSpeed -= walkDeceleration * Time.deltaTime;
@@ -126,11 +125,9 @@ public class CharacterBehaviour : MonoBehaviour
 					// TODO: SFX groan 
 				}
 			}
-			dirty = false;
 			return;
 		}
 		
-		dirty = true;
 		Debug.Log("Changing animation to " + state);
 		_idleTime = 0;
 		
