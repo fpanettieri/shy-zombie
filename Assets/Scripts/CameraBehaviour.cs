@@ -5,19 +5,16 @@ public class CameraBehaviour : MonoBehaviour
 {
 	// inspector properties
 	public Transform target;
-	public float height = 2;
-	public float distance = 5;
-	public float angle = 45;
-	
-	// internal state
-	private bool moving;
+	public float height = 3;
+	public float distance = 4;
+	public float angle = 0;
 	
 	// aux variables
 	private Vector3 offset;
 	
 	public void Start ()
 	{
-		moving = false;
+		MoveCamera();
 	}
 	
 	public void Update ()
@@ -36,6 +33,17 @@ public class CameraBehaviour : MonoBehaviour
 		offset = new Vector3(Mathf.Sin(angle) * distance, height, Mathf.Cos(angle) * distance);
 		transform.position = target.position + offset;
 		transform.LookAt(target);
+	}
+	
+	// Hack used to debug camera configuration
+	public void OnDrawGizmos()
+	{
+		if(target == null){
+			Debug.LogWarning("Camera target is null");
+			return;
+		}
+		
+		MoveCamera();
 	}
 	
 }
