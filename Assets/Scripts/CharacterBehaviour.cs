@@ -125,11 +125,15 @@ public class CharacterBehaviour : MonoBehaviour
 		
 		switch(state){
 		case CharacterConstants.IDLE_STATE:
-			animation.CrossFade("zombie_idle"); break;
+			animation.CrossFade("zombie_idle");
+			audio.Pause();
+			break;
 		case CharacterConstants.TURNING_LEFT_STATE:
 		case CharacterConstants.TURNING_RIGHT_STATE:
 		case CharacterConstants.WALKING_STATE:
-			animation.CrossFade("zombie_walk"); break;
+			animation.CrossFade("zombie_walk");
+			audio.Play();
+			break;
 		} 
 		
 		previousState = state;
