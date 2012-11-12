@@ -11,10 +11,11 @@ public class CharacterBehaviour : MonoBehaviour
 	public float rotateSpeed = 1.5f;
 	public float idleTime = 10.0f;
 	
-	// Internal state
+	// Global state
 	public static bool leftPressed;
 	public static bool rightPressed;
 	public static bool walkPressed;
+	public static int brainz = 0;
 	
 	private int state;
 	private int previousState;
@@ -134,5 +135,12 @@ public class CharacterBehaviour : MonoBehaviour
 		previousState = state;
 	}
 	
-	
+	public void OnTriggerEnter (Collider trigger)
+	{
+		if(trigger.tag == "Collectable"){
+			brainz++;
+			Destroy (trigger.gameObject);
+			// TODO: SFX omn nom nom 
+		}
+	}
 }

@@ -79,5 +79,4 @@ public class CameraBehaviour : MonoBehaviour
 		
 		MoveCamera();
 	}
-	
 }
