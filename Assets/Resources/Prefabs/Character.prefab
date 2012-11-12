@@ -859,7 +859,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100056}
   m_LocalRotation: {x: 0, y: .947152734, z: 0, w: -.3207829}
-  m_LocalPosition: {x: 6.94329357, y: 0, z: 39.9370346}
+  m_LocalPosition: {x: 4.30092144, y: 0, z: 42.7871399}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400000}
@@ -940,7 +940,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 10b6c6f1c0e034219ab6145cba3cc3c0, type: 1}
   m_PlayOnAwake: 0
-  m_Volume: .300000012
+  m_Volume: .200000003
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1093,10 +1093,10 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1057b59876eb6456c9986e44df913597, type: 1}
   m_Name: 
-  walkSpeed: 2
-  walkAcceleration: 10
-  walkDeceleration: 5
-  walkAnimationSpeed: 2.5
+  walkSpeed: 3
+  walkAcceleration: 3
+  walkDeceleration: 10
+  walkAnimationSpeed: 3
   rotateSpeed: 3
   idleTime: 10
 --- !u!137 &13700000
