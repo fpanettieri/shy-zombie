@@ -10,13 +10,14 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
-  - 136: {fileID: 13600000}
+  - 65: {fileID: 6500000}
+  - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: Teleport
-  m_TagString: Untagged
+  m_Name: Portal
+  m_TagString: Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!4 &400000
 Transform:
@@ -24,9 +25,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: .326505452, y: -.62721163, z: -.627211273, w: -.326505601}
-  m_LocalPosition: {x: .150000006, y: 0, z: .25}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -1.14352972e-14, y: .996718526, z: 1.18818079e-07, w: .0809455737}
+  m_LocalPosition: {x: -.640547752, y: 1.83922863, z: -14.1384115}
+  m_LocalScale: {x: 3, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!23 &2300000
@@ -35,13 +36,13 @@ Renderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 3
-  m_LightmapTilingOffset: {x: .0849609002, y: .0849609002, z: .141757995, w: .881991982}
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 3f2ba1e095bb8154c9a460494a2b3ff2, type: 2}
+  - {fileID: 2100000, guid: 6913ac45e420e4869b83cd7423bf6134, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -53,9 +54,9 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mesh: {fileID: 4300000, guid: 6b29f4c9b4c3c4d089bb2cd48c47ebe9, type: 3}
---- !u!136 &13600000
-CapsuleCollider:
+  m_Mesh: {fileID: 4300000, guid: f104918ae1d6547ccbcd23cdbf7ceb7f, type: 2}
+--- !u!65 &6500000
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -63,10 +64,20 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: .0500000007
-  m_Height: .300000012
-  m_Direction: 2
-  m_Center: {x: -.00999999978, y: -.00300000003, z: .0799999982}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c23ed7cd3f049dca33b600885dcc2d, type: 1}
+  m_Name: 
+  frameSkip: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
