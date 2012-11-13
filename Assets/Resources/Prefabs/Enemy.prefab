@@ -294,6 +294,7 @@ GameObject:
   serializedVersion: 3
   m_Component:
   - 4: {fileID: 400038}
+  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -370,6 +371,7 @@ GameObject:
   serializedVersion: 3
   m_Component:
   - 4: {fileID: 400048}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: UltraLowPoly
   m_TagString: Untagged
@@ -492,6 +494,22 @@ GameObject:
   - 4: {fileID: 400064}
   m_Layer: 0
   m_Name: L_ankle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!1 &100074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 3
+  m_Component:
+  - 4: {fileID: 400074}
+  - 114: {fileID: 11400006}
+  m_Layer: 0
+  m_Name: Path
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -736,6 +754,7 @@ Transform:
   m_LocalPosition: {x: 1.36092758, y: -3.33786011e-06, z: -6.64731026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 400074}
   - {fileID: 400020}
   m_Father: {fileID: 0}
 --- !u!4 &400040
@@ -892,6 +911,17 @@ Transform:
   m_Children:
   - {fileID: 400056}
   m_Father: {fileID: 400052}
+--- !u!4 &400074
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100074}
+  m_LocalRotation: {x: -4.69273509e-08, y: -.998715699, z: -9.98374219e-08, w: -.0506647751}
+  m_LocalPosition: {x: -4.11450434, y: 0, z: 13.8711319}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400038}
 --- !u!111 &11100000
 Animation:
   m_ObjectHideFlags: 1
@@ -989,6 +1019,44 @@ Animation:
   m_UserAABB:
     m_Center: {x: .0401564837, y: 1.02422988, z: .212448418}
     m_Extent: {x: 1.4562825, y: 1.38235199, z: 1.96914291}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c6e6e9efc02427ca980033553d4d21, type: 1}
+  m_Name: 
+  navigator: {fileID: 11400002}
+  path: {fileID: 11400006}
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69cadffb0d8ec604581b9baaba7e4f62, type: 1}
+  m_Name: 
+  m_step: 0
+  m_speed: 0
+  MinSpeed: .100000001
+  MaxSpeed: .5
+  Acceleration: .0500000007
+  Deceleration: .0500000007
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2cb65c6a9a5f254494a139aa38de7c2, type: 1}
+  m_Name: 
 --- !u!137 &13700000
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

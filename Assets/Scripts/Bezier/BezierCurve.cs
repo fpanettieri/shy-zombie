@@ -17,6 +17,8 @@ public abstract class BezierCurve : MonoBehaviour
 	public static string CUBIC = "cubic";
 	
 	public float m_length = 1;
+	public bool m_drawPoints = true;
+	public bool m_drawLines = true;
 		
 	protected Transform m_begin;
 	protected Transform m_end;
@@ -91,12 +93,12 @@ public abstract class BezierCurve : MonoBehaviour
 		FindControlPoints();
 		
 		Gizmos.color = Color.gray;
-		DrawControlLines();
-		DrawControlPoints();
+		if(m_drawLines){ DrawControlLines(); }
+		if(m_drawPoints){ DrawControlPoints(); }
 		
 		Gizmos.color = Color.white;
-		DrawLine();
-		DrawPoints();
+		if(m_drawLines){ DrawLine(); }
+		if(m_drawPoints){ DrawPoints(); }
 	}
 	
 	/**
@@ -107,12 +109,12 @@ public abstract class BezierCurve : MonoBehaviour
 		FindControlPoints();
 		
 		Gizmos.color = Color.green;
-		DrawControlLines();
-		DrawControlPoints();
+		if(m_drawLines){ DrawControlLines(); }
+		if(m_drawPoints){ DrawControlPoints(); } 
 		
 		Gizmos.color = Color.yellow;
-		DrawLine();
-		DrawPoints();
+		if(m_drawLines){ DrawLine(); }
+		if(m_drawPoints){ DrawPoints(); }
 	}
 	
 	/**
