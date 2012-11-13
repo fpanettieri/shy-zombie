@@ -90,7 +90,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.2525482, y: 0, z: -.1445961}
+  m_LocalPosition: {x: 5.93214321, y: 0, z: 9.6330061}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
@@ -239,9 +239,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0d958fea6632412f9ff6dfdbe0e872a, type: 1}
   m_Name: 
-  bounce: .00499999989
-  bounceSpeed: 1
-  rotationSpeed: 1
+  bounce: .00999999978
+  bounceSpeed: 1.5
+  rotationSpeed: 1.5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

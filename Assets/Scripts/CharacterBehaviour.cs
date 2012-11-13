@@ -146,5 +146,10 @@ public class CharacterBehaviour : MonoBehaviour
 			Destroy (trigger.gameObject);
 			// TODO: SFX omn nom nom 
 		}
+		
+		if(trigger.tag == "Goal" && brainz > 0){
+			Debug.Log("Show puzzle complete screen");
+			// TODO: SFX omn nom nom 
+		}
 	}
 }

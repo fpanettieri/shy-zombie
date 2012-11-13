@@ -859,7 +859,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100056}
   m_LocalRotation: {x: 0, y: .269224167, z: 0, w: -.963077545}
-  m_LocalPosition: {x: 1.09481931, y: 0, z: -9.94568825}
+  m_LocalPosition: {x: 1.09481931, y: .100000001, z: -9.94568825}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400000}
@@ -1094,7 +1094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1057b59876eb6456c9986e44df913597, type: 1}
   m_Name: 
   walkSpeed: 3
-  walkAcceleration: 2
+  walkAcceleration: 5
   walkDeceleration: 10
   walkAnimationSpeed: 3
   rotateSpeed: 3
