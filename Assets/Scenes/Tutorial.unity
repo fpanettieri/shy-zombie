@@ -6254,6 +6254,32 @@ Prefab:
   m_RootGameObject: {fileID: 893265699}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1132017907
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 3
+  m_Component:
+  - 4: {fileID: 1132017908}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1132017908
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1132017907}
+  m_LocalRotation: {x: 0, y: .269223779, z: 0, w: -.963077664}
+  m_LocalPosition: {x: 1.09481895, y: .100000001, z: -9.94568825}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &1143237373
 GameObject:
   m_ObjectHideFlags: 0

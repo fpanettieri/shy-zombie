@@ -43,6 +43,7 @@ public class EnemyBehaviour : MonoBehaviour
 			animation.Play("worry", AnimationPlayMode.Mix);
 			navigator.transform.LookAt(player);
 			// TODO: shout "Zombieeee"
+			GameObject.Find("Player").GetComponent<CharacterBehaviour>().Scare();
 		}
 
 		if(delayed){

@@ -21,12 +21,14 @@ public class CharacterBehaviour : MonoBehaviour
 	private int previousState;
 	private float currentSpeed;
 	private float _idleTime;
+	private float scaredTime;
 	
 	// Auxiliar variables
 	private Touch touch;
 	private new Animation animation;
 	private CharacterController controller;
 	private Vector3 forward;
+	private GameObject[] brainzArr;
 	
 	private Vector2 leftButton;
 	private Vector2 rightButton;
@@ -49,6 +51,8 @@ public class CharacterBehaviour : MonoBehaviour
 		leftButton = new Vector2(80, 184);
 		rightButton = new Vector2(192, 80);
 		walkButton = new Vector2(888, 136);
+		
+		brainzArr = GameObject.FindGameObjectsWithTag("Collectable");
 	}
 	
 	public void Update ()
@@ -75,6 +79,15 @@ public class CharacterBehaviour : MonoBehaviour
 	
 	private void SwitchState()
 	{
+		if(state == CharacterConstants.SCARED_STATE){
+			scaredTime -=Time.deltaTime;
+			if(scaredTime > 0){
+				return;
+			} else {
+				Restart();
+			}
+		}
+		
 		if(walkPressed){
 			state = CharacterConstants.WALKING_STATE;
 		} else if(leftPressed) {
@@ -88,6 +101,10 @@ public class CharacterBehaviour : MonoBehaviour
 	
 	private void UpdateState()
 	{
+		if(state == CharacterConstants.SCARED_STATE){
+			return;
+		}
+		
 		if(leftPressed){
 			transform.Rotate(0, -rotateSpeed, 0);
 			
@@ -134,6 +151,9 @@ public class CharacterBehaviour : MonoBehaviour
 			animation.CrossFade("zombie_walk");
 			audio.Play();
 			break;
+		case CharacterConstants.SCARED_STATE:
+			animation.CrossFade("worry");
+			break;
 		} 
 		
 		previousState = state;
@@ -143,13 +163,34 @@ public class CharacterBehaviour : MonoBehaviour
 	{
 		if(trigger.tag == "Collectable"){
 			brainz++;
-			Destroy (trigger.gameObject);
+			trigger.gameObject.SetActiveRecursively(false);
 			// TODO: SFX omn nom nom 
 		}
 		
 		if(trigger.tag == "Goal" && brainz > 0){
 			Debug.Log("Show puzzle complete screen");
 			// TODO: SFX omn nom nom 
+		}
+	}
+	
+	public void Scare()
+	{
+		if (state == CharacterConstants.SCARED_STATE) { return; }
+		
+		state = CharacterConstants.SCARED_STATE;
+		scaredTime = animation["worry"].length;
+		// TODO: SFX whereeee, whereeee
+	}
+	
+	public void Restart()
+	{
+		GameObject spawnPoint = GameObject.Find("SpawnPoint");
+		transform.position = spawnPoint.transform.position;
+		transform.rotation = spawnPoint.transform.rotation;
+		currentSpeed = 0;
+		brainz = 0;
+		for(int i = 0; i < brainzArr.Length; i++){
+			brainzArr[i].SetActiveRecursively(true);
 		}
 	}
 }

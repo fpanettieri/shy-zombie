@@ -26,9 +26,8 @@ public class Teleport : MonoBehaviour
 	
 	public void FixedUpdate()
 	{
-		if(visible){ return; }
 		visible = CharacterBehaviour.brainz > 0;
-		if(visible) { renderer.enabled = true; }
+		renderer.enabled = visible;
 	}
 	
 	public void Update ()
