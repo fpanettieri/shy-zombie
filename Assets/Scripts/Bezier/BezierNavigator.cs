@@ -18,7 +18,16 @@ public class BezierNavigator : MonoBehaviour
 	public Callback OnCurve;
 	public Callback OnComplete;
 	
+	// inspector properties
+	public float MinSpeed = 0.1f;
+	public float MaxSpeed = 0.5f;
+	public float Acceleration = 0.05f;
+	public float Deceleration = 0.05f;
+	
+	// internal state
+	private bool m_paused = false;
 	private bool m_done = true;
+	
 	private BezierCurve[] m_curves;
 	private BezierCurve m_curve;
 	private int m_curveIndex;
@@ -27,14 +36,11 @@ public class BezierNavigator : MonoBehaviour
 	public float m_step = 0;
 	public float m_speed = 0;
 	
-	public float MinSpeed = 0.1f;
-	public float MaxSpeed = 0.5f;
-	public float Acceleration = 0.05f;
-	public float Deceleration = 0.05f;
+
 	
 	void Update()
 	{
-		if( m_done )
+		if( m_done || m_paused )
 		{
 			return;
 		}
@@ -172,24 +178,13 @@ public class BezierNavigator : MonoBehaviour
 		}
 	}
 	
-	public void WillSkip()
+	public void Pause()
 	{
-		m_waitingForSkip = true;
+		m_paused = true;
 	}
 	
-	/**
-	 * Move the object to the last node
-	 */ 
-	public void Skip()
+	public void Resume()
 	{
-		m_waitingForSkip = false;
-		
-		if( m_done || m_curves == null || m_curves.Length < 1 )
-		{
-			return;
-		}
-		
-		MoveToCurve( m_curves.Length - 1 );
-		m_step = 1;
+		m_paused = false;
 	}
 }
