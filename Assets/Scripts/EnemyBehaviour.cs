@@ -23,28 +23,28 @@ public class EnemyBehaviour : MonoBehaviour
 	private new Animation animation;
 	private RaycastHit hit;
 	
-	// FIXME: remove this
-	private LineRenderer line;
-	
 	public void Start()
 	{
+		delayed = false;
 		counter = 0;
 		navigator.OnCurve = OnCurve;
 		navigator.OnComplete = OnComplete;
 		navigator.Navigate(path.GetCurvesArray());
 		animation = GetComponentInChildren<Animation>();
 		animation.Play("walk");
-		line = GetComponent<LineRenderer>();
 	}
 
 	public void Update ()
 	{
 		if(LineOfSight()){
-			Debug.Log("Player visible, distance: " + Vector3.Distance(enemy.position, player.position));
-			line.SetPosition(0, enemy.position);
-			line.SetPosition(1, player.position);
+			delayed = true;
+			delay = animation["worry"].length;
+			navigator.Pause();
+			animation.Play("worry", AnimationPlayMode.Mix);
+			navigator.transform.LookAt(player);
+			// TODO: shout "Zombieeee"
 		}
-		
+
 		if(delayed){
 			delay -= Time.deltaTime;
 			if(delay < 0){
