@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
 	public BezierNavigator navigator;
 	public BezierPath path;
 	public float interval = 0;
+	public float skip = 0;
 	
 	// internal state
 	private bool delayed;
@@ -40,7 +41,8 @@ public class EnemyController : MonoBehaviour
 	
 	public void OnCurve()
 	{
-		if(++counter % 2 == 1){ return; }
+		if(counter++ < skip){ return; }
+		counter = 0;
 		delayed = true;
 		delay = interval;
 		navigator.Pause();
