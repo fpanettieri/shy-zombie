@@ -1736,8 +1736,6 @@ MonoBehaviour:
   rightButtonOn: {fileID: 1682163121}
   walkButtonOff: {fileID: 1297957900}
   walkButtonOn: {fileID: 193404458}
-  pauseButtonOff: {fileID: 956854134}
-  pauseButtonOn: {fileID: 1361564056}
   brainzText: {fileID: 842051156}
 --- !u!114 &363270132
 MonoBehaviour:
@@ -3045,6 +3043,22 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3a0116522107f4a279af148f19253b23, type: 2}
       propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: 3a0116522107f4a279af148f19253b23, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: 3a0116522107f4a279af148f19253b23, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 3a0116522107f4a279af148f19253b23, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: 3a0116522107f4a279af148f19253b23, type: 2}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

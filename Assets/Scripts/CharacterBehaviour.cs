@@ -12,11 +12,9 @@ public class CharacterBehaviour : MonoBehaviour
 	public float idleTime = 10.0f;
 	
 	// Global state
-	public static bool paused = false;
 	public static bool leftPressed;
 	public static bool rightPressed;
 	public static bool walkPressed;
-	public static bool pausePressed;
 	public static int brainz = 0;
 	
 	private int state;
@@ -35,14 +33,12 @@ public class CharacterBehaviour : MonoBehaviour
 	private Vector2 leftButton;
 	private Vector2 rightButton;
 	private Vector2 walkButton;
-	private Vector2 pauseButton;
 	
 	public void Start ()
 	{
 		leftPressed = false;
 		rightPressed = false;
 		walkPressed = false;
-		pausePressed = false;
 		state = CharacterConstants.IDLE_STATE;
 		previousState = CharacterConstants.IDLE_STATE;
 		
@@ -55,7 +51,6 @@ public class CharacterBehaviour : MonoBehaviour
 		leftButton = new Vector2(80, 184);
 		rightButton = new Vector2(192, 80);
 		walkButton = new Vector2(888, 136);
-		pauseButton = new Vector2(928, 688);
 		
 		brainzArr = GameObject.FindGameObjectsWithTag("Collectable");
 	}
@@ -63,7 +58,6 @@ public class CharacterBehaviour : MonoBehaviour
 	public void Update ()
 	{
 		DetectInput();
-		if(paused){ return; } 
 		SwitchState();
 		UpdateState();
 		ChangeAnimation();
@@ -74,20 +68,12 @@ public class CharacterBehaviour : MonoBehaviour
 		leftPressed = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
 		rightPressed = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
 		walkPressed = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
-		pausePressed = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.P);
 
 		for(int i = 0; i < Input.touchCount; i++){
 			touch = Input.GetTouch(i);
 			if(Vector2.Distance(touch.position, leftButton) < 64){ leftPressed = true; }
 			if(Vector2.Distance(touch.position, rightButton) < 64){ rightPressed = true; }
 			if(Vector2.Distance(touch.position, walkButton) < 64){ walkPressed = true; }
-			if(Vector2.Distance(touch.position, pauseButton) < 64 && touch.phase == TouchPhase.Began){ pausePressed = true; }
-		}
-		
-		if(pausePressed){
-			audio.Pause();
-			paused = !paused;
-			Time.timeScale = 1 - Time.timeScale;
 		}
 	}
 	
