@@ -23,6 +23,14 @@ public class CameraBehaviour : MonoBehaviour
 	private float beginAngle;
 	private float beginZoom;
 	
+	// scared animation
+	private bool scared;
+	private float scaredTime;
+	private Vector3 scaredBeginPosition;
+	private Quaternion scaredBeginRotation;
+	private Vector3 scaredEndPosition;
+	private Quaternion scaredEndRotation;
+	
 	public void Start ()
 	{
 		moving = false;
@@ -31,6 +39,19 @@ public class CameraBehaviour : MonoBehaviour
 	
 	public void Update ()
 	{
+		if(scared){
+			scaredTime -= Time.deltaTime;
+			if(scaredTime > 1){
+				transform.position = Vector3.Lerp(scaredBeginPosition, scaredEndPosition, 2 - scaredTime);
+				transform.rotation = Quaternion.Lerp(scaredBeginRotation, scaredEndRotation, 2 - scaredTime);
+			}
+			
+			if (scaredTime < 0){
+				scared = false;
+				angle = 2.3f;
+			}
+			return;
+		}
 		DetectInput();
 		MoveCamera();
 	}
@@ -78,5 +99,15 @@ public class CameraBehaviour : MonoBehaviour
 		}
 		
 		MoveCamera();
+	}
+	
+	public void Scare(Transform enemy)
+	{
+		scared = true;
+		scaredTime = 2;
+		scaredBeginPosition = transform.position;
+		scaredBeginRotation = transform.rotation;
+		scaredEndPosition = enemy.position + enemy.forward * 3;
+		scaredEndRotation = enemy.rotation * Quaternion.Euler( new Vector3(0, 180, 0 ));
 	}
 }
