@@ -1,6 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Toon_Level_Kit/Documentation/Readme.txt">
+    <Files>
+      <File FileName="Assets/Scripts/CameraBehaviour.cs" Line="51" Column="18" />
+      <File FileName="Assets/Scripts/EnemyBehaviour.cs" Line="43" Column="16" />
+      <File FileName="Assets/Scripts/CharacterBehaviour.cs" Line="178" Column="17" />
+      <File FileName="Assets/Toon_Level_Kit/Documentation/Readme.txt" Line="24" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
