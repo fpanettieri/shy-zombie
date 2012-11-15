@@ -18,6 +18,7 @@ public class EnemyBehaviour : MonoBehaviour
 	private bool delayed;
 	private float delay;
 	private int counter;
+	private bool scared;
 	
 	// auxiliar variables
 	private new Animation animation;
@@ -36,19 +37,23 @@ public class EnemyBehaviour : MonoBehaviour
 
 	public void Update ()
 	{
-		if(LineOfSight()){
+		if(LineOfSight() && !scared){
+			scared = true;
 			delayed = true;
-			delay = animation["worry"].length;
+			delay = 2.2f;
 			navigator.Pause();
-			animation.Play("worry", AnimationPlayMode.Mix);
+			animation.Stop();
+			animation.Play("worry", AnimationPlayMode.Queue);
 			navigator.transform.LookAt(player);
 			// TODO: shout "Zombieeee"
 			GameObject.Find("Player").GetComponent<CharacterBehaviour>().Scare();
+			Camera.main.GetComponent<CameraBehaviour>().Scare(enemy);
 		}
 
 		if(delayed){
 			delay -= Time.deltaTime;
 			if(delay < 0){
+				scared = false;
 				delayed = false;
 				animation.Play("walk", AnimationPlayMode.Mix);
 				navigator.Resume();
