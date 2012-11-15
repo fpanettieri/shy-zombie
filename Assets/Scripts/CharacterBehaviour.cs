@@ -151,9 +151,6 @@ public class CharacterBehaviour : MonoBehaviour
 			animation.CrossFade("zombie_walk");
 			audio.Play();
 			break;
-		case CharacterConstants.SCARED_STATE:
-			animation.CrossFade("worry");
-			break;
 		} 
 		
 		previousState = state;
@@ -178,7 +175,7 @@ public class CharacterBehaviour : MonoBehaviour
 		if (state == CharacterConstants.SCARED_STATE) { return; }
 		
 		state = CharacterConstants.SCARED_STATE;
-		scaredTime = animation["worry"].length;
+		scaredTime = 2;
 		// TODO: SFX whereeee, whereeee
 	}
 	
