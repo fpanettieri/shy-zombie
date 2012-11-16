@@ -43,7 +43,7 @@ public class CharacterBehaviour : MonoBehaviour
 		previousState = CharacterConstants.IDLE_STATE;
 		
 		animation = GetComponentInChildren<Animation>();
-		animation.Play("zombie_idle");
+		animation.CrossFade("zombie_idle", 2);
 		animation["zombie_walk"].speed = walkAnimationSpeed;
 		
 		controller = GetComponent<CharacterController>();

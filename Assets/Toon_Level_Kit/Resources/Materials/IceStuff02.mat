@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: IceStuff02
-  m_Shader: {fileID: 4800000, guid: 1975b42686be2478e968d492e051a19e, type: 1}
+  m_Shader: {fileID: 4800000, guid: 48dca5b99d113b8d11006bab44295342, type: 1}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -23,6 +23,13 @@ Material:
           name: _BumpMap
         second:
           m_Texture: {fileID: 2800000, guid: 531c14f8d5cdc4e5baa83ee6e16f783a, type: 1}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Ramp
+        second:
+          m_Texture: {fileID: 2800000, guid: cf609095d0e824a32941f5f382e5c7ab, type: 1}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -57,12 +64,12 @@ Material:
         second: 3
       data:
         first:
-          name: _InvFade
-        second: 1.75865674
-      data:
-        first:
           name: _EmissionLM
         second: 0
+      data:
+        first:
+          name: _InvFade
+        second: 1.75865674
       data:
         first:
           name: _Parallax
@@ -71,7 +78,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .843283594, g: .940820336, b: 1, a: .694117665}
+        second: {r: .620433271, g: .694328964, b: .739045501, a: .689999998}
       data:
         first:
           name: _SpecColor
