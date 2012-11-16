@@ -5,6 +5,8 @@ public class BillboardLaub: MonoBehaviour {
 
 	private Transform mainCamTransform;
 	private Transform cachedTransform;
+	private const int skip = 2;
+	private int frame = 0;
 	
 	// Use this for initialization
 	void Start () {
@@ -12,8 +14,11 @@ public class BillboardLaub: MonoBehaviour {
 		cachedTransform = transform;
 	}
 	
-	void Update(){
-	
+	void Update()
+	{
+		if(frame++ < skip ){ return; }
+		frame = 0;
+		
 		if (mainCamTransform.InverseTransformPoint( cachedTransform.position).z>=0){
 			Vector3 v = mainCamTransform.position - cachedTransform.position;
 			v.x=v.z=0;
