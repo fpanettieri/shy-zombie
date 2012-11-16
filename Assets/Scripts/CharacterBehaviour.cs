@@ -164,9 +164,8 @@ public class CharacterBehaviour : MonoBehaviour
 			// TODO: SFX omn nom nom 
 		}
 		
-		if(trigger.tag == "Goal" && brainz > 0){
-			Debug.Log("Show puzzle complete screen");
-			// TODO: SFX omn nom nom 
+		if(trigger.tag == "Portal"){
+			Application.LoadLevel(trigger.GetComponent<Portal>().level);
 		}
 	}
 	
