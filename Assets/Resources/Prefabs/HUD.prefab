@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
-  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: HUD
   m_TagString: Untagged
@@ -973,19 +972,7 @@ MonoBehaviour:
   rightButtonOn: {fileID: 2300014}
   walkButtonOff: {fileID: 2300022}
   walkButtonOn: {fileID: 2300020}
-  pauseButtonOff: {fileID: 2300010}
-  pauseButtonOn: {fileID: 2300008}
   brainzText: {fileID: 13200000}
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e2405ff943955f40be96fc19c4653b0, type: 1}
-  m_Name: 
 --- !u!132 &13200000
 GUIText:
   m_ObjectHideFlags: 1
