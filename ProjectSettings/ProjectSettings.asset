@@ -33,7 +33,7 @@ PlayerSettings:
   defaultIsFullScreen: 0
   runInBackground: 0
   captureSingleScreen: 0
-  Override IPod Music: 0
+  Override IPod Music: 1
   usePlayerLog: 1
   useMacAppStoreValidation: 0
   xboxSkinOnGPU: 1

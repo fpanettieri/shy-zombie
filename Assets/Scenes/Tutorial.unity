@@ -11584,7 +11584,7 @@ MonoBehaviour:
   player: {fileID: 1078262015}
   navigator: {fileID: 840891331}
   path: {fileID: 63553139}
-  interval: 3
+  interval: 4
   skip: 0
   fov: 45
   viewDistance: 10
@@ -11932,7 +11932,7 @@ MonoBehaviour:
   player: {fileID: 1078262015}
   navigator: {fileID: 782367601}
   path: {fileID: 1260636438}
-  interval: 2
+  interval: 3
   skip: 1
   fov: 45
   viewDistance: 10
