@@ -59,6 +59,7 @@ public class CharacterBehaviour : MonoBehaviour
 	{
 		DetectInput();
 		SwitchState();
+		StopFreeFall();
 		UpdateState();
 		ChangeAnimation();
 	}
@@ -123,6 +124,17 @@ public class CharacterBehaviour : MonoBehaviour
 		controller.SimpleMove(forward * currentSpeed);
 	}
 	
+	private void StopFreeFall()
+	{
+		if(transform.position.y < -3){
+			state = CharacterConstants.FALLING_STATE;
+		}
+		if(transform.position.y < -30){
+			animation.Play("zombie_idle");
+			Restart();
+		}
+	}
+	
 	private void ChangeAnimation()
 	{
 		if(previousState == state){
@@ -150,6 +162,11 @@ public class CharacterBehaviour : MonoBehaviour
 		case CharacterConstants.WALKING_STATE:
 			animation.CrossFade("zombie_walk");
 			audio.Play();
+			break;
+		
+		case CharacterConstants.FALLING_STATE:
+			animation.CrossFade("flight_idle");
+			// SFX: ahhhhh
 			break;
 		} 
 		
