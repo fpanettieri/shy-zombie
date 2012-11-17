@@ -13,6 +13,9 @@ public class HudBehaviour : MonoBehaviour
 	public MeshRenderer walkButtonOff;
 	public MeshRenderer walkButtonOn;
 	
+	public MeshRenderer feedbackButtonOff;
+	public MeshRenderer feedbackButtonOn;
+	
 	public GUIText brainzText;
 	
 	// internal state
@@ -33,6 +36,9 @@ public class HudBehaviour : MonoBehaviour
 		
 		walkButtonOff.enabled = !CharacterBehaviour.walkPressed;
 		walkButtonOn.enabled = CharacterBehaviour.walkPressed;
+		
+		feedbackButtonOff.enabled = !FeedbackBehaviour.feedbackPressed;
+		feedbackButtonOn.enabled = FeedbackBehaviour.feedbackPressed;
 		
 		if(CharacterBehaviour.brainz != brainz){
 			brainz = CharacterBehaviour.brainz;
