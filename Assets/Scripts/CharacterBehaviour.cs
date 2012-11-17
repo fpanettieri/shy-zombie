@@ -185,7 +185,7 @@ public class CharacterBehaviour : MonoBehaviour
 	
 	public void OnTriggerEnter (Collider trigger)
 	{
-		if(trigger.tag == "Collectable" && state == CharacterConstants.WALKING_STATE){
+		if(trigger.tag == "Collectable"){
 			brainz++;
 			trigger.gameObject.SetActiveRecursively(false);
 			eating.Play();

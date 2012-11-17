@@ -4191,6 +4191,7 @@ GameObject:
   - 4: {fileID: 635587147}
   - 33: {fileID: 635587149}
   - 23: {fileID: 635587148}
+  - 135: {fileID: 635587150}
   m_Layer: 0
   m_Name: Barrel01
   m_TagString: Untagged
@@ -4236,6 +4237,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1197206164}
   m_GameObject: {fileID: 635587146}
   m_Mesh: {fileID: 4300000, guid: 5475e200a318c2c4892366c2087df046, type: 3}
+--- !u!135 &635587150
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 635587146}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .0280209873
+  m_Center: {x: 1.9331619e-08, y: -3.16159401e-08, z: .0299850125}
 --- !u!1001 &639654274
 Prefab:
   m_ObjectHideFlags: 0
@@ -8648,32 +8661,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1256223635}
   m_GameObject: {fileID: 1211027882}
   m_Mesh: {fileID: 4300002, guid: dee3e1218f65343e599ecad72639185f, type: 3}
---- !u!1 &1212439621
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 3
-  m_Component:
-  - 4: {fileID: 1212439622}
-  m_Layer: 0
-  m_Name: CustomLight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1212439622
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1212439621}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
 --- !u!1 &1220917515
 GameObject:
   m_ObjectHideFlags: 0
@@ -14770,6 +14757,7 @@ GameObject:
   - 4: {fileID: 1941005281}
   - 33: {fileID: 1941005283}
   - 23: {fileID: 1941005282}
+  - 135: {fileID: 1941005284}
   m_Layer: 0
   m_Name: Barrel01
   m_TagString: Untagged
@@ -14815,6 +14803,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1197206164}
   m_GameObject: {fileID: 1941005280}
   m_Mesh: {fileID: 4300000, guid: 5475e200a318c2c4892366c2087df046, type: 3}
+--- !u!135 &1941005284
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1941005280}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .0280209873
+  m_Center: {x: 4.54086511e-08, y: -3.16159401e-08, z: .0299850143}
 --- !u!1 &1949568061
 GameObject:
   m_ObjectHideFlags: 0
@@ -16347,6 +16347,7 @@ GameObject:
   serializedVersion: 3
   m_Component:
   - 4: {fileID: 2095303047}
+  - 135: {fileID: 2095303048}
   m_Layer: 0
   m_Name: Tree_with_foliage_01
   m_TagString: Untagged
@@ -16385,6 +16386,18 @@ Transform:
   - {fileID: 1826078927}
   - {fileID: 1791480753}
   m_Father: {fileID: 381515048}
+--- !u!135 &2095303048
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2095303046}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .400000006
+  m_Center: {x: 0, y: .5, z: 0}
 --- !u!1 &2107812905
 GameObject:
   m_ObjectHideFlags: 0

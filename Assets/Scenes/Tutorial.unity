@@ -12087,7 +12087,7 @@ MonoBehaviour:
   path: {fileID: 63553139}
   interval: 4
   skip: 0
-  fov: 45
+  fov: 30
   viewDistance: 10
 --- !u!1 &1328581341
 GameObject:
@@ -12482,7 +12482,7 @@ MonoBehaviour:
   path: {fileID: 1260636438}
   interval: 3
   skip: 1
-  fov: 45
+  fov: 30
   viewDistance: 10
 --- !u!82 &1344949442
 AudioSource:
