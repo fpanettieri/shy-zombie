@@ -383,7 +383,7 @@ GUIText:
   m_GameObject: {fileID: 100014}
   m_Enabled: 0
   serializedVersion: 3
-  m_Text: This is my entry for the "F*ck this Jam"
+  m_Text: I made this prototype for the "F*ck this Jam"
   m_Anchor: 4
   m_Alignment: 1
   m_PixelOffset: {x: 0, y: 0}

@@ -175,7 +175,7 @@ public class CharacterBehaviour : MonoBehaviour
 	
 	public void OnTriggerEnter (Collider trigger)
 	{
-		if(trigger.tag == "Collectable"){
+		if(trigger.tag == "Collectable" && state == CharacterConstants.WALKING_STATE){
 			brainz++;
 			trigger.gameObject.SetActiveRecursively(false);
 			// TODO: SFX omn nom nom 
