@@ -26,7 +26,7 @@ public class HudBehaviour : MonoBehaviour
 		brainz = 0;
 	}
 	
-	public void FixedUpdate ()
+	public void Update ()
 	{	
 		leftButtonOff.enabled = !CharacterBehaviour.leftPressed;
 		leftButtonOn.enabled = CharacterBehaviour.leftPressed;

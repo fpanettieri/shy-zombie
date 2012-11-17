@@ -11,6 +11,10 @@ public class CharacterBehaviour : MonoBehaviour
 	public float rotateSpeed = 1.5f;
 	public float idleTime = 10.0f;
 	
+	private AudioSource bored;
+	private AudioSource eating;
+	private AudioSource falling;
+	
 	// Global state
 	public static bool leftPressed;
 	public static bool rightPressed;
@@ -34,6 +38,7 @@ public class CharacterBehaviour : MonoBehaviour
 	private Vector2 rightButton;
 	private Vector2 walkButton;
 	
+	
 	public void Start ()
 	{
 		leftPressed = false;
@@ -53,6 +58,11 @@ public class CharacterBehaviour : MonoBehaviour
 		walkButton = new Vector2(888, 136);
 		
 		brainzArr = GameObject.FindGameObjectsWithTag("Collectable");
+		
+		AudioSource[] sources = GetComponents<AudioSource>();
+		bored = sources[1];
+		eating = sources[2];
+		falling = sources[3];
 	}
 	
 	public void Update ()
@@ -144,7 +154,7 @@ public class CharacterBehaviour : MonoBehaviour
 					animation.Play("zombie_attack");
 					animation.Play("zombie_idle", AnimationPlayMode.Queue);
 					_idleTime = -2;
-					// TODO: SFX groan 
+					bored.Play();
 				}
 			}
 			return;
@@ -166,7 +176,7 @@ public class CharacterBehaviour : MonoBehaviour
 		
 		case CharacterConstants.FALLING_STATE:
 			animation.CrossFade("flight_idle");
-			// SFX: ahhhhh
+			falling.Play();
 			break;
 		} 
 		
@@ -178,7 +188,7 @@ public class CharacterBehaviour : MonoBehaviour
 		if(trigger.tag == "Collectable" && state == CharacterConstants.WALKING_STATE){
 			brainz++;
 			trigger.gameObject.SetActiveRecursively(false);
-			// TODO: SFX omn nom nom 
+			eating.Play();
 		}
 		
 		if(trigger.tag == "Portal"){
@@ -192,7 +202,6 @@ public class CharacterBehaviour : MonoBehaviour
 		
 		state = CharacterConstants.SCARED_STATE;
 		scaredTime = 2;
-		// TODO: SFX whereeee, whereeee
 	}
 	
 	public void Restart()
