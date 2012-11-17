@@ -9627,6 +9627,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -.406994879
       objectReference: {fileID: 0}
+    - target: {fileID: 10800000, guid: 8d9cb4825ad9f4969914a1fef2d1bff9, type: 2}
+      propertyPath: m_Intensity
+      value: .5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d9cb4825ad9f4969914a1fef2d1bff9, type: 2}
   m_RootGameObject: {fileID: 729886964}
